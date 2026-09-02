@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Gallium.vcxproj" Id="6b35c7de-2c9d-4328-9f94-b20d3c35328f" />
+</Solution>
