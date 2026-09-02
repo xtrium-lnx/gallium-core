@@ -15,7 +15,7 @@ namespace ga::platform
 	class Input;
 	class Timer;
 
-	struct PlatformDesc
+	struct PlatformInfo
 	{
 		std::string appName;
 		glm::uvec3  appVersion;
@@ -34,7 +34,7 @@ namespace ga::platform
 	public:
 		struct Surface;
 
-		Platform(const PlatformDesc& desc);
+		Platform(const PlatformInfo& desc);
 		~Platform();
 
 		Impl& GetImpl() const;

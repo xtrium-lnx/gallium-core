@@ -21,7 +21,7 @@ vk::raii::Sampler CreateSampler(const vk::raii::Device& device, vk::SamplerAddre
 	return device.createSampler(createInfo);
 }
 
-Image::Image(Device& device, const ImageDesc& desc)
+Image::Image(Device& device, const ImageInfo& desc)
 	: m_pImpl(new Impl)
 {
 	m_pImpl->owner      = &device;
@@ -108,7 +108,7 @@ Image::Image(Device& device, const ImageDesc& desc)
 
 }
 
-Image::Image(Device& device, const ImageDescEx& desc)
+Image::Image(Device& device, const ImageInfoEx& desc)
 {
 	m_pImpl->owner      = &device;
 	m_pImpl->aspectMask = s_DeduceVkAspectMask(desc.format);
@@ -199,7 +199,7 @@ Image::Image(Device& device, const ImageDescEx& desc)
 		m_pImpl->descriptorIndex = device.GetDescriptorRegistry().Register(*this);
 }
 
-Image::Image(const Device& device, const ExistingImageDesc& desc)
+Image::Image(const Device& device, const ExistingImageInfo& desc)
 	: m_pImpl(new Impl)
 {
 	m_pImpl->owner      = &const_cast<Device&>(device);

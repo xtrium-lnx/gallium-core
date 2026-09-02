@@ -22,7 +22,7 @@ namespace ga::gpu
 		glm::uvec3  size;
 	};
 
-	struct ImageDesc
+	struct ImageInfo
 	{
 		EImageType                 type;
 		EFormat                    format;
@@ -38,7 +38,7 @@ namespace ga::gpu
 		const void*     initialData = nullptr;
 	};
 
-	struct ImageDescEx
+	struct ImageInfoEx
 	{
 		EImageType                 type;
 		EFormat                    format;
@@ -54,7 +54,7 @@ namespace ga::gpu
 		std::span<const MipData>   initialData  = {};
 	};
 
-	struct ExistingImageDesc;
+	struct ExistingImageInfo;
 
 	class Image
 	{
@@ -62,9 +62,9 @@ namespace ga::gpu
 		std::unique_ptr<Impl> m_pImpl;
 
 	public:
-		Image(Device& device, const ImageDesc& desc);
-		Image(Device& device, const ImageDescEx& desc);
-		Image(const Device& device, const ExistingImageDesc& desc);
+		Image(Device& device, const ImageInfo& desc);
+		Image(Device& device, const ImageInfoEx& desc);
+		Image(const Device& device, const ExistingImageInfo& desc);
 		~Image();
 
 		void SetDebugName(const std::string& name) const;

@@ -104,8 +104,6 @@ Buffer::Buffer(Device& device, EBufferUsage usage, const ShaderStructArrayInstan
 
 Buffer::~Buffer()
 {
-	m_pImpl->owner->GetDescriptorRegistry().Unregister(m_pImpl->descriptorIndex);
-
 	if (m_pImpl->stagingBuffer != VK_NULL_HANDLE)
 		s_DestroyStaging(m_pImpl->allocator, m_pImpl->stagingAllocation, m_pImpl->stagingBuffer);
 
@@ -144,11 +142,6 @@ void Buffer::SetDebugName(const std::string& name) const
 const Buffer::Impl& Buffer::GetImpl() const
 {
 	return *m_pImpl;
-}
-
-const DescriptorIndex& Buffer::GetDescriptorIndex() const
-{
-	return m_pImpl->descriptorIndex;
 }
 
 uintptr_t Buffer::GetGpuAddress() const

@@ -307,7 +307,7 @@ Device::Impl::CreateSwapchainReturnType Device::Impl::CreateSwapchain(const Devi
 	auto swapchain = vk::raii::SwapchainKHR(device, swapchainCreateInfo);
 
 	auto swapchainImages = swapchain.getImages() | std::views::transform([&owner, swapSurfaceFormat, swapExtent](const vk::Image& image) {
-		auto desc = ExistingImageDesc {
+		auto desc = ExistingImageInfo {
 			.image      = image,
 			.aspectMask = vk::ImageAspectFlagBits::eColor,
 			.format     = swapSurfaceFormat.format,

@@ -42,7 +42,7 @@ std::shared_ptr<ga::gpu::Image> StbImageLoader::Load(std::string_view path, std:
             throw std::runtime_error(std::string("StbImageLoader: failed to decode image: ") + stbi_failure_reason());
         }
 
-        return std::make_shared<ga::gpu::Image>(m_gpu, ga::gpu::ImageDesc {
+        return std::make_shared<ga::gpu::Image>(m_gpu, ga::gpu::ImageInfo {
             .type        = ga::gpu::EImageType::Image2D,
             .format      = ga::gpu::EFormat::R32G32B32A32_SFloat,
             .width       = size_t(width),
@@ -64,7 +64,7 @@ std::shared_ptr<ga::gpu::Image> StbImageLoader::Load(std::string_view path, std:
             throw std::runtime_error(std::string("StbImageLoader: failed to decode image: ") + stbi_failure_reason());
         }
 
-        return std::make_shared<ga::gpu::Image>(m_gpu, ga::gpu::ImageDesc {
+        return std::make_shared<ga::gpu::Image>(m_gpu, ga::gpu::ImageInfo {
             .type        = ga::gpu::EImageType::Image2D,
             .format      = ga::gpu::EFormat::R8G8B8A8_UNorm,
             .width       = size_t(width),

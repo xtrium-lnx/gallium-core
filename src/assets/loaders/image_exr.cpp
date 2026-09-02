@@ -48,7 +48,7 @@ std::shared_ptr<ga::gpu::Image> ExrImageLoader::Load(std::string_view path, std:
 
     return std::make_shared<ga::gpu::Image>(
         m_gpu,
-        ga::gpu::ImageDesc {
+        ga::gpu::ImageInfo {
             .type        = gpu::EImageType::Image2D,
             .format      = gpu::EFormat::R32G32B32A32_SFloat,
             .width       = size_t(width),

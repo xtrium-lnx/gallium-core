@@ -268,7 +268,7 @@ std::shared_ptr<ga::render::Font> TtfFontLoader::Load(std::string_view path, std
         }
     }
 
-    result->atlas = std::make_unique<ga::gpu::Image>(m_gpu, ga::gpu::ImageDesc {
+    result->atlas = std::make_unique<ga::gpu::Image>(m_gpu, ga::gpu::ImageInfo {
         .type        = ga::gpu::EImageType::Image2D,
         .format      = ga::gpu::EFormat::R8G8B8A8_UNorm,
         .width       = size_t(atlasW),

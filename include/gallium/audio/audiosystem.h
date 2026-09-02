@@ -24,7 +24,7 @@ namespace ga::audio
         Streamed
     };
 
-    struct AudioSourceDesc
+    struct AudioSourceInfo
     {
         SoundHandle    sound;
         MixerBusHandle bus;
@@ -64,7 +64,7 @@ namespace ga::audio
         void        UnloadSound(SoundHandle handle);
         bool        IsSoundLoaded(SoundHandle handle) const;
 
-        AudioSourceHandle  CreateSource(const AudioSourceDesc& desc);
+        AudioSourceHandle  CreateSource(const AudioSourceInfo& desc);
         void               DestroySource(AudioSourceHandle handle);
         bool               IsSourceValid(AudioSourceHandle handle) const;
         AudioSource&       GetSource(AudioSourceHandle handle);

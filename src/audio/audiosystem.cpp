@@ -630,7 +630,7 @@ bool AudioSystem::IsSoundLoaded(SoundHandle handle) const
     return m_pImpl->FindSound(handle) != nullptr;
 }
 
-AudioSourceHandle AudioSystem::CreateSource(const AudioSourceDesc& desc)
+AudioSourceHandle AudioSystem::CreateSource(const AudioSourceInfo& desc)
 {
     auto& impl = *m_pImpl;
     const auto bus = desc.bus.IsValid() ? desc.bus : impl.masterBus;

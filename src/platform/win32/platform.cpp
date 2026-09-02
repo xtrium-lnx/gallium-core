@@ -22,7 +22,7 @@ void Platform::Impl::OnFileDropped(GLFWwindow* window, int path_count, const cha
 
 // ----------------------------------------------------------------------------
 
-Platform::Platform(const PlatformDesc& desc)
+Platform::Platform(const PlatformInfo& desc)
 	: m_pImpl(new Impl)
 {
 	m_pImpl->desc = desc;

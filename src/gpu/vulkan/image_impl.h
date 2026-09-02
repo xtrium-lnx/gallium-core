@@ -27,7 +27,7 @@ namespace ga::gpu
 		DescriptorIndex         descriptorIndex;
 	};
 
-	struct ExistingImageDesc
+	struct ExistingImageInfo
 	{
 		vk::Image            image;
 		vk::ImageAspectFlags aspectMask;

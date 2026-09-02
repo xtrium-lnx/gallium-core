@@ -60,7 +60,7 @@ public:
             }
         }
 
-        auto image = std::make_unique<ga::gpu::Image>(m_device, ga::gpu::ImageDesc {
+        auto image = std::make_unique<ga::gpu::Image>(m_device, ga::gpu::ImageInfo {
             .type         = ga::gpu::EImageType::Image2D,
             .format       = format,
             .width        = size.x,

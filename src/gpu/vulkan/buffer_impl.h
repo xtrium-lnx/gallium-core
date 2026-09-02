@@ -18,7 +18,6 @@ namespace ga::gpu
 		VmaAllocator         allocator  = VK_NULL_HANDLE;
 		size_t               size       = 0;
 		vk::BufferUsageFlags usage;
-		DescriptorIndex      descriptorIndex;
 
 		VmaAllocation        stagingAllocation = nullptr;
 		vk::Buffer           stagingBuffer     = nullptr;

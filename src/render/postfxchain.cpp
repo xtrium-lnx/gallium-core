@@ -27,7 +27,7 @@ void PostFXChain::Execute(ga::gpu::Device& gpu, const ga::gpu::CommandEncoder& e
 		if (m_ping)
 			gpu.Defer([a = std::move(m_ping), b = std::move(m_pong)] {});
 
-		auto pingPongImageDesc = ga::gpu::ImageDesc {
+		auto pingPongImageDesc = ga::gpu::ImageInfo {
 			.type   = ga::gpu::EImageType::Image2D,
 			.format = ga::gpu::EFormat::R16G16B16A16_SFloat,
 			.width  = input.Size().x,

@@ -56,7 +56,6 @@ namespace ga::gpu
 		void SetDebugName(const std::string& name) const;
 
 		const Impl&            GetImpl() const;
-		const DescriptorIndex& GetDescriptorIndex() const;
 		uintptr_t              GetGpuAddress() const;
 		size_t                 Size() const;
 

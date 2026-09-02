@@ -22,7 +22,7 @@ namespace ga::platform
 
 	struct Platform::Impl
 	{
-		PlatformDesc                     desc;
+		PlatformInfo                     desc;
 		Surface                          surface;
 		std::unique_ptr<platform::Vfs>   vfs;
 		std::unique_ptr<platform::Input> input;
