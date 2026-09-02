@@ -1,6 +1,6 @@
 # GalliumCore
 
-** GalliumCore is a low-level, opinionated foundation for building real-time applications and game engines.**
+**GalliumCore is a low-level, opinionated foundation for building real-time applications and game engines.**
 
 It provides a modern C++ abstraction over the fundamental systems required by a renderer and runtime: GPU resources and command submission, synchronization, shader interfaces, rendering infrastructure, platform services, assets, and audio.
 
