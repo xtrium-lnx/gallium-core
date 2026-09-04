@@ -54,6 +54,12 @@
     <Filter Include="Shader Files">
       <UniqueIdentifier>{af2c0e7d-4552-45f9-b261-85d076716792}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gallium\core">
+      <UniqueIdentifier>{fa1283eb-3e67-4833-980b-832bd90b680c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{8732d209-f0be-48c6-81f2-36ce737eb486}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\platform\win32\platform.cpp">
@@ -151,6 +157,30 @@
     </ClCompile>
     <ClCompile Include="src\assets\loaders\image_exr.cpp">
       <Filter>Source Files\assets\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\gamepad.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\inputtranslator.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\log.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\messagebus.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\task.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\ctti_reflection.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\ctti_serialization.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\string_utils.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +357,48 @@
     </ClInclude>
     <ClInclude Include="src\assets\loaders\image_exr.h">
       <Filter>Source Files\assets\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\delegate.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\gamepad.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\inputmessages.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\inputtranslator.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\log.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\messagebus.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\property.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\task.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\uiobject.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\globalinstance.h">
+      <Filter>Header Files\gallium</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\core\ctti.h">
+      <Filter>Header Files\gallium\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\badge.h">
+      <Filter>Header Files\gallium</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\macros.h">
+      <Filter>Header Files\gallium</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gallium\string_utils.h">
+      <Filter>Header Files\gallium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

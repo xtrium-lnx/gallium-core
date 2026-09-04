@@ -10,6 +10,59 @@ Timer::Timer()
 
 Timer::~Timer() = default;
 
+uint64_t Timer::Now()
+{
+    FILETIME   filetime;
+    GetSystemTimePreciseAsFileTime(&filetime);
+
+    FILETIME   localfiletime;
+    FileTimeToLocalFileTime(&filetime, &localfiletime);
+
+    SYSTEMTIME systemtime;
+    FileTimeToSystemTime(&localfiletime, &systemtime);
+
+    uint64_t       retval = systemtime.wYear;
+    retval <<= 4;  retval += systemtime.wMonth;
+    retval <<= 5;  retval += systemtime.wDay;
+    retval <<= 5;  retval += systemtime.wHour;
+    retval <<= 6;  retval += systemtime.wMinute;
+    retval <<= 6;  retval += systemtime.wSecond;
+    retval <<= 10; retval += systemtime.wMilliseconds;
+
+    return retval;
+}
+
+std::string Timer::TimestampToString(uint64_t timestamp)
+{
+    uint64_t milliseconds = timestamp & ((1 << 10) - 1); timestamp >>= 10;
+    uint64_t seconds = timestamp & ((1 << 6) - 1); timestamp >>= 6;
+    uint64_t minutes = timestamp & ((1 << 6) - 1); timestamp >>= 6;
+    uint64_t hours = timestamp & ((1 << 5) - 1); timestamp >>= 5;
+    uint64_t day = timestamp & ((1 << 5) - 1); timestamp >>= 5;
+    uint64_t month = timestamp & ((1 << 4) - 1); timestamp >>= 4;
+    uint64_t year = timestamp;
+
+    auto alignToLength = [](uint64_t v, uint64_t boundary)
+    {
+        std::string retval = "";
+
+        while (boundary > 1)
+        {
+            if (v >= boundary)
+                break;
+
+            retval += "0";
+            boundary /= 10;
+        }
+
+        retval += std::to_string(v);
+        return retval;
+    };
+
+    return alignToLength(year, 1000) + "-" + alignToLength(month, 10) + "-" + alignToLength(day, 10) + " " +
+        alignToLength(hours, 10) + ":" + alignToLength(minutes, 10) + ":" + alignToLength(seconds, 10) + "." + alignToLength(milliseconds, 100);
+}
+
 void Timer::Reset()
 {
 	QueryPerformanceFrequency(&m_pImpl->frequency);

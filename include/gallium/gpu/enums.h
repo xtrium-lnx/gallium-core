@@ -9,6 +9,7 @@ namespace ga::gpu
     enum class EBufferUsage
         : uint32_t
     {
+        None                               = 0,
         UniformBuffer                      = 1 << 0,
         StorageBuffer                      = 1 << 1,
         VertexBuffer                       = 1 << 2,
@@ -452,6 +453,9 @@ namespace ga::gpu
         Min,
         Max
     };
+
+    enum class QueryPoolId : uintptr_t {};
+    enum class SemaphoreId : uintptr_t {};
 }
 
 ga::gpu::EBufferUsage        operator|(ga::gpu::EBufferUsage a,        ga::gpu::EBufferUsage b);
@@ -466,7 +470,5 @@ ga::gpu::EPipelineStage      operator|(ga::gpu::EPipelineStage a,      ga::gpu::
 ga::gpu::EPipelineStage      operator&(ga::gpu::EPipelineStage a,      ga::gpu::EPipelineStage b);
 ga::gpu::EAccessType         operator|(ga::gpu::EAccessType a,         ga::gpu::EAccessType b);
 ga::gpu::EAccessType         operator&(ga::gpu::EAccessType a,         ga::gpu::EAccessType b);
-
-enum class QueryPoolId : uintptr_t {};
 
 #endif /* GALLIUM__GPU__ENUMS_H */

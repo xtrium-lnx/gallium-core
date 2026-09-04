@@ -19,8 +19,6 @@ namespace ga::gpu
 	class Image;
 	class ShaderCache;
 
-	enum class SemaphoreId : uintptr_t {};
-
 	struct DeviceCaps
 	{
 		bool rayQuery            = false;
@@ -38,6 +36,8 @@ namespace ga::gpu
 
 		const Impl& GetImpl() const;
 		uint32_t    FrameCount() const;
+
+		bool SupportsRaytracing() const;
 
 		DescriptorRegistry& GetDescriptorRegistry();
 		ShaderCache&        GetShaderCache();

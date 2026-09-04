@@ -627,7 +627,9 @@ std::shared_ptr<ga::render::Mesh> GlbMeshLoader::Load(std::string_view path, std
 
     result->indexCount  = uint32_t(indices.size());
     result->vertexCount = uint32_t(positions.size());
-    result->UpdateAccelerationStructures(m_gpu);
+
+    if (m_gpu.SupportsRaytracing())
+        result->UpdateAccelerationStructures(m_gpu);
 
     return result;
 }

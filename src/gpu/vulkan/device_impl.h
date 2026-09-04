@@ -43,6 +43,8 @@ namespace ga::gpu
 		vk::raii::SurfaceKHR                surface                  = nullptr;
 		vk::raii::Device                    device                   = nullptr;
 
+		bool                                supportsRaytracing       = false;
+
 		vk::raii::SwapchainKHR              swapchain                = nullptr;
 		std::vector<std::unique_ptr<Image>> swapchainImages;
 		bool                                swapchainNeedsRecreation = false;

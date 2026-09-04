@@ -283,8 +283,8 @@ void RenderEncoder::DrawIndirect(Buffer& buffer) const
 void RenderEncoder::SetViewport(const glm::vec2& origin, const glm::vec2& size, const glm::vec2& zBounds /* = { 0.0f, 1.0f } */) const
 {
 	m_pImpl->commandBuffer->setViewport(0, {{
-		origin.x, origin.y,
-		size.x, size.y,
+		origin.x, origin.y + size.y,
+		size.x, -size.y,
 		zBounds.x, zBounds.y
 	}});
 }

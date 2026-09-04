@@ -28,7 +28,7 @@ namespace ga::gpu
 	class  ComputePipeline;
     class  RenderEncoder;
 	class  TransferEncoder;
-	class ShaderStructInstance;
+	class  ShaderStructInstance;
 }
 
 namespace ga::render
@@ -165,7 +165,7 @@ namespace ga::render
 		void UploadStream(gpu::Device& gpu, std::span<const typename VertexStream<E>::Type> data)
 		{
 			vertexBuffers[StreamIndex<E>] = std::make_unique<gpu::Buffer>(gpu, gpu::BufferInfo{
-				.usage       = gpu::EBufferUsage::VertexBuffer | gpu::EBufferUsage::AccelerationStructureBuildReadonly,
+				.usage       = gpu::EBufferUsage::VertexBuffer | (gpu.SupportsRaytracing() ? gpu::EBufferUsage::AccelerationStructureBuildReadonly : gpu::EBufferUsage::None),
 				.size        = data.size_bytes(),
 				.initialData = data.data()
 			});

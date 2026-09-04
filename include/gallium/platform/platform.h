@@ -2,6 +2,8 @@
 #define GALLIUM__PLATFORM__PLATFORM_H
 #pragma once
 
+#include <gallium/core/messagebus.h>
+
 #include <memory>
 #include <string>
 #include <vector>
@@ -25,6 +27,10 @@ namespace ga::platform
 		bool        mountWorkingDirectoryAsDefault = true;
 		bool        hideMouseCursor = false;
 	};
+
+	GA_MESSAGEDATA(SurfaceResizeData,
+		glm::uvec2 surfaceSize;
+	);
 
 	class Platform
 	{

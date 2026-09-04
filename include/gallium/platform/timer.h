@@ -4,6 +4,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <string>
 
 namespace ga::platform
 {
@@ -15,6 +16,9 @@ namespace ga::platform
 	public:
 		Timer();
 		~Timer();
+
+		static uint64_t Now();
+		static std::string TimestampToString(uint64_t timestamp);
 
 		void   Reset();
 		void   Tick();

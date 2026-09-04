@@ -27,7 +27,7 @@ Mesh::~Mesh()
 void Mesh::UploadIndices(gpu::Device& gpu, std::span<uint32_t> data)
 {
 	indexBuffer = std::make_unique<ga::gpu::Buffer>(gpu, ga::gpu::BufferInfo {
-        .usage       = ga::gpu::EBufferUsage::IndexBuffer | gpu::EBufferUsage::AccelerationStructureBuildReadonly,
+        .usage       = ga::gpu::EBufferUsage::IndexBuffer | (gpu.SupportsRaytracing() ? gpu::EBufferUsage::AccelerationStructureBuildReadonly : gpu::EBufferUsage::None),
         .size        = data.size_bytes(),
         .initialData = data.data()
     });
@@ -221,7 +221,7 @@ void Skin::Apply(ga::gpu::Device& gpu, const ga::gpu::CommandEncoder& encoder, g
         if (!mesh.processedVertexBuffers[i])
         {
             mesh.processedVertexBuffers[i] = std::make_unique<ga::gpu::Buffer>(gpu, ga::gpu::BufferInfo {
-                .usage                   = ga::gpu::EBufferUsage::VertexBuffer | ga::gpu::EBufferUsage::AccelerationStructureBuildReadonly | ga::gpu::EBufferUsage::StorageBuffer,
+                .usage                   = ga::gpu::EBufferUsage::VertexBuffer | ga::gpu::EBufferUsage::StorageBuffer | (gpu.SupportsRaytracing() ? ga::gpu::EBufferUsage::AccelerationStructureBuildReadonly : gpu::EBufferUsage::None),
 		        .size                    = mesh.vertexBuffers[i]->Size(),
 		        .createPersistentStaging = true,
 		        .enforceDeviceLocal      = true

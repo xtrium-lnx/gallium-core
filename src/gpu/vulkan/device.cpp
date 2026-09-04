@@ -440,6 +440,8 @@ Device::Device(platform::Platform& platform, const DeviceCaps& caps /* = {} */)
 	});
 	SubmitAndWait(cb);
 	ReleaseCommandBuffer(cb);
+
+	m_pImpl->supportsRaytracing = caps.rayQuery || caps.raytracingPipelines;
 }
 
 Device::~Device()
@@ -485,6 +487,11 @@ const Device::Impl& Device::GetImpl() const
 uint32_t Device::FrameCount() const
 {
 	return uint32_t(m_pImpl->swapchainImages.size());
+}
+
+bool Device::SupportsRaytracing() const
+{
+	return m_pImpl->supportsRaytracing;
 }
 
 DescriptorRegistry& Device::GetDescriptorRegistry()

@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include <gallium/globalinstance.h>
 #include <gallium/assets/iassetloader.h>
 #include <gallium/gpu/image.h>
 #include <gallium/audio/sound.h>
@@ -30,6 +31,7 @@ namespace ga::assets
     };
 
     class AssetManager
+        : public ga::GlobalInstance<AssetManager, AssetManagerCreateInfo>
     {
         template <typename T>
         using LoaderList = std::vector<std::unique_ptr<IAssetLoader<T>>>;
@@ -137,6 +139,16 @@ namespace ga::assets
             const auto bytes = m_ReadBytes(path);
 
             return Insert<T>(path, bytes, m_ReadLastModified(path));
+        }
+
+        template<typename T>
+        std::string PathOf(const T& t)
+        {
+            for (const auto& [name, asset] : m_cache)
+                if (&t == static_cast<T*>(asset.get()))
+                    return name;
+
+            return "";
         }
     };
 }

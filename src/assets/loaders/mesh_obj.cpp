@@ -247,7 +247,9 @@ std::shared_ptr<ga::render::Mesh>  ObjMeshLoader::Load(std::string_view path, st
 
     result->indexCount  = uint32_t(indices.size());
     result->vertexCount = uint32_t(positions.size());
-    result->UpdateAccelerationStructures(m_gpu);
+
+    if (m_gpu.SupportsRaytracing())
+        result->UpdateAccelerationStructures(m_gpu);
 
     return result;
 }
