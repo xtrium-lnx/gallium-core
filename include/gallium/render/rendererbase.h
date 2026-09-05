@@ -45,7 +45,7 @@ namespace ga::render
 
 		virtual ga::gpu::Image* RetrieveImage(string_hash_t id) { return nullptr; }
 
-		virtual std::vector<gpu::SemaphoreId> Render(const ga::gpu::CommandEncoder& encoder, ga::gpu::Image& output) = 0;
+		virtual std::vector<gpu::SemaphoreId> Render(ga::gpu::Device& gpu, const ga::gpu::CommandEncoder& encoder, ga::gpu::Image& output) = 0;
 		virtual void Reset() = 0;
 	};
 }

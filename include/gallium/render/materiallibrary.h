@@ -53,9 +53,11 @@ namespace ga::render
 		void Clear();
 
 		std::unordered_map<std::string, Material>& Materials();
-		bool      Contains(const std::string& name);
-		uint32_t  IndexOf(const std::string& name);
-		Material& ValueOf(const std::string& name);
+		bool        Contains(const std::string& name);
+		uint32_t    IndexOf(const std::string& name);
+		std::string NameOf(uint32_t i);
+		Material&   ValueOf(const std::string& name);
+		Material&   ValueOf(uint32_t i);
 
 		uint32_t Add(const std::string& name, const Material& material);
 		void     Remove(const std::string& name);

@@ -115,6 +115,7 @@ namespace ga::gpu
 	public:
 		CommandEncoder(CommandBuffer& cb);
 
+		const CommandBuffer& Owner() const;
 		const Impl& GetImpl() const;
 
 		void PushLabel(const std::string& label, const glm::vec4& color = glm::vec4(1.0f)) const;

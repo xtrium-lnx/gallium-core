@@ -79,8 +79,14 @@ void CommandBuffer::Record(std::function<void(const CommandEncoder&)> contents, 
 CommandEncoder::CommandEncoder(CommandBuffer& cb)
 	: m_pImpl(new Impl)
 {
+	m_pImpl->owner                 = &cb;
 	m_pImpl->commandBuffer         = &cb.GetImpl().commandBuffer;
 	m_pImpl->bindlessDescriptorSet = *const_cast<Device&>(cb.GetOwner()).GetDescriptorRegistry().GetImpl().set;
+}
+
+const CommandBuffer& CommandEncoder::Owner() const
+{
+	return *m_pImpl->owner;
 }
 
 const CommandEncoder::Impl& CommandEncoder::GetImpl() const

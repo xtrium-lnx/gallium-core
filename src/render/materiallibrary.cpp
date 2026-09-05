@@ -48,9 +48,23 @@ uint32_t MaterialLibrary::IndexOf(const std::string& name)
 	return m_materialIndices[name];
 }
 
+std::string MaterialLibrary::NameOf(uint32_t i)
+{
+	for (auto& [name, index] : m_materialIndices)
+		if (index == i)
+			return name;
+
+	return "(default)";
+}
+
 Material& MaterialLibrary::ValueOf(const std::string& name)
 {
 	return m_materials[name];
+}
+
+Material& MaterialLibrary::ValueOf(uint32_t i)
+{
+	return ValueOf(NameOf(i));
 }
 
 uint32_t MaterialLibrary::Add(const std::string& name, const Material& material)

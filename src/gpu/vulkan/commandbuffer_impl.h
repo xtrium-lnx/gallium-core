@@ -19,6 +19,7 @@ namespace ga::gpu
 
 	struct CommandEncoder::Impl
 	{
+		CommandBuffer*           owner;
 		vk::raii::CommandBuffer* commandBuffer;
 		vk::DescriptorSet        bindlessDescriptorSet;
 	};
