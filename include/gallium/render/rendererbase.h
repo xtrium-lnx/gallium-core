@@ -39,7 +39,7 @@ namespace ga::render
 
 		virtual void AddGeometry(const MeshInstance& mesh, const glm::mat4& transform, uint32_t arrayIndex = 0) = 0;
 		virtual void AddLight(const LightData& light, const glm::mat4& transform) = 0;
-		virtual void SetEnvironment(uint32_t imageId, float intensity) = 0;
+		virtual void SetEnvironment(uint32_t diffuse, uint32_t specular, float intensity) = 0;
 		virtual void SetCamera(const glm::mat4& view, const glm::mat4& projection) = 0;
 		virtual bool HasCamera() const = 0;
 
