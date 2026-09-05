@@ -149,6 +149,8 @@ namespace ga::core
         {
             if (m_changeSignal)
                 m_changeSignal();
+            else
+                m_changedIfNoCallback = true;
         }
 
         bool HasChanged()

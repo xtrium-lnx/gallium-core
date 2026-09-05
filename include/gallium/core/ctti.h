@@ -231,13 +231,13 @@ namespace ga::core
 				(*this) << nullptr;
 			else
 			{
-				if (m_existingPointersToId.count(static_cast<CttiObject*>(ptr)))
-					(*this) << m_existingPointersToId[static_cast<CttiObject*>(ptr)];
+				if (m_existingPointersToId.count((CttiObject*)(ptr)))
+					(*this) << m_existingPointersToId[(CttiObject*)(ptr)];
 				else
 				{
 					(*this) << uint64_t(-1);
-					m_existingPointersToId[static_cast<CttiObject*>(ptr)] = uint64_t(m_bytes.size());
-					(*this) << *static_cast<CttiObject*>(ptr);
+					m_existingPointersToId[(CttiObject*)(ptr)] = uint64_t(m_bytes.size());
+					(*this) << *(CttiObject*)(ptr);
 				}
 			}
 	
