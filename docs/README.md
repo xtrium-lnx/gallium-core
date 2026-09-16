@@ -1,12 +1,8 @@
 # Gallium
 
-**Gallium is the foundation layer.**
+**Gallium is an opinionated foundation layer for game engines and, more generally, realtime graphics.**
 
 It provides the platform, graphics, assets, audio, and utility abstractions that a higher-level engine can build on.
-
-If Calcium3D is the game engine, Gallium is the reusable runtime underneath it.
-
-image_group{"layout":"carousel","aspect_ratio":"16:9","query":["game engine architecture rendering assets GPU diagram","modern game engine rendering pipeline"],"num_per_query":1}
 
 ## Start here
 
