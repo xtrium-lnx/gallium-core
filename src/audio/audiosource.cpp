@@ -16,6 +16,11 @@ AudioSource::AudioSource(uint32_t id, SoundHandle sound, MixerBusHandle bus, flo
     m_pImpl->loop = loop;
 }
 
+AudioSource::AudioSource(ga::core::CttiDeserializer& deserializer)
+{
+    // FIXME: Integrate with asset manager
+}
+
 AudioSource::~AudioSource()
 {
     assert(!m_pImpl || !m_pImpl->maSoundInitialised
@@ -69,7 +74,14 @@ void AudioSource::SetPosition(const glm::vec3& pos)
     m_pImpl->position = pos;
     m_pImpl->spatial = true;
     if (m_pImpl->maSoundInitialised)
+    {
+        ma_sound_set_spatialization_enabled(&m_pImpl->maSound, true);
+        ma_sound_set_positioning(&m_pImpl->maSound, ma_positioning_absolute);
         ma_sound_set_position(&m_pImpl->maSound, pos.x, pos.y, pos.z);
+        ma_sound_set_attenuation_model(&m_pImpl->maSound, ma_attenuation_model_inverse);
+        ma_sound_set_min_distance(&m_pImpl->maSound, 1.0f);
+        ma_sound_set_rolloff(&m_pImpl->maSound, 1.0f);
+    }
 }
 
 void AudioSource::SetVelocity(const glm::vec3& vel)
@@ -81,3 +93,9 @@ void AudioSource::SetVelocity(const glm::vec3& vel)
 
 glm::vec3 AudioSource::GetPosition() const { return m_pImpl->position; }
 bool      AudioSource::IsSpatial()   const { return m_pImpl->spatial; }
+
+void AudioSource::DisableSpatial()
+{
+    ma_sound_set_spatialization_enabled(&m_pImpl->maSound, false);
+    m_pImpl->spatial = false;
+}

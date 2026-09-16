@@ -2,6 +2,7 @@
 #define GALLIUM__AUDIO__AUDIOSOURCE_H
 #pragma once
 
+#include <gallium/core/ctti.h>
 #include <gallium/audio/mixerbus.h>
 #include <gallium/audio/sound.h>
 
@@ -28,7 +29,10 @@ namespace ga::audio
     };
 
     class AudioSource
+        : public ga::core::CttiObject
     {
+        GA_CTTI_OBJECT(ga::audio::AudioSource, ga::core::CttiObject);
+
         friend class AudioSystem;
 
         struct Impl;
@@ -36,6 +40,7 @@ namespace ga::audio
 
     public:
         AudioSource(uint32_t id, SoundHandle sound, MixerBusHandle bus, float volume, float pitch, bool loop);
+        AudioSource(ga::core::CttiDeserializer& deserializer);
         ~AudioSource();
 
         AudioSource(AudioSource&&) noexcept;
@@ -62,6 +67,7 @@ namespace ga::audio
         void      SetVelocity(const glm::vec3& velocity);
         glm::vec3 GetPosition() const;
         bool      IsSpatial() const;
+        void      DisableSpatial();
     };
 }
 
