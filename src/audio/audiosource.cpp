@@ -80,7 +80,8 @@ void AudioSource::SetPosition(const glm::vec3& pos)
         ma_sound_set_position(&m_pImpl->maSound, pos.x, pos.y, pos.z);
         ma_sound_set_attenuation_model(&m_pImpl->maSound, ma_attenuation_model_inverse);
         ma_sound_set_min_distance(&m_pImpl->maSound, 1.0f);
-        ma_sound_set_rolloff(&m_pImpl->maSound, 1.0f);
+        ma_sound_set_rolloff(&m_pImpl->maSound, 0.5f);
+        ma_sound_set_doppler_factor(&m_pImpl->maSound, 100.0f);
     }
 }
 
